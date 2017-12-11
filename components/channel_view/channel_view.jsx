@@ -8,8 +8,6 @@ import React from 'react';
 import {FormattedMessage} from 'react-intl';
 
 import * as UserAgent from 'utils/user_agent.jsx';
-import * as Utils from 'utils/utils.jsx';
-
 import deferComponentRender from 'components/deferComponentRender';
 
 import ChannelHeader from 'components/channel_header';
