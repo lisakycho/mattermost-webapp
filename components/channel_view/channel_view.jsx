@@ -18,7 +18,7 @@ import FileUploadOverlay from 'components/file_upload_overlay.jsx';
 import PostView from 'components/post_view';
 import TutorialView from 'components/tutorial/tutorial_view.jsx';
 
-export default class ChannelView extends React.Component {
+export default class ChannelView extends React.PureComponent {
     static propTypes = {
 
         /**
@@ -34,12 +34,7 @@ export default class ChannelView extends React.Component {
         /**
          * Set to show the tutorial
          */
-        showTutorial: PropTypes.bool.isRequired,
-
-        /**
-         * React router params
-         */
-        params: PropTypes.object
+        showTutorial: PropTypes.bool.isRequired
     };
 
     constructor(props) {
@@ -71,22 +66,6 @@ export default class ChannelView extends React.Component {
         if (this.props.channelId !== nextProps.channelId) {
             this.createDeferredPostView();
         }
-    }
-
-    shouldComponentUpdate(nextProps) {
-        if (!Utils.areObjectsEqual(nextProps.params, this.props.params)) {
-            return true;
-        }
-
-        if (nextProps.channelId !== this.props.channelId) {
-            return true;
-        }
-
-        if (nextProps.deactivatedChannel !== this.props.deactivatedChannel) {
-            return true;
-        }
-
-        return false;
     }
 
     getChannelView = () => {

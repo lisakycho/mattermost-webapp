@@ -20,7 +20,6 @@ function mapStateToProps(state, ownProps) {
     }
 
     return {
-        ...ownProps,
         channelId: state.entities.channels.currentChannelId,
         deactivatedChannel,
         showTutorial: Number(get(state, Preferences.TUTORIAL_STEP, state.entities.users.currentUserId, 999)) <= TutorialSteps.INTRO_SCREENS
