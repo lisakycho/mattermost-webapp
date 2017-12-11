@@ -39,6 +39,7 @@ import QuickSwitchModal from 'components/quick_switch_modal';
 import RenameChannelModal from 'components/rename_channel_modal';
 import StatusIcon from 'components/status_icon.jsx';
 import MenuIcon from 'components/svg/menu_icon';
+import VideoIcon from 'components/svg/video_icon';
 import ToggleModalButton from 'components/toggle_modal_button.jsx';
 
 import Pluggable from 'plugins/pluggable';
@@ -347,10 +348,9 @@ export default class Navbar extends React.Component {
 
         return (
             <div className={'pull-right description navbar-right__icon webrtc__button ' + circleClass}>
-                <a
-                    dangerouslySetInnerHTML={{__html: Constants.VIDEO_ICON}}
-                    onClick={this.initWebrtc}
-                />
+                <a onClick={this.initWebrtc}>
+                    <VideoIcon/>
+                </a>
             </div>
         );
     }
