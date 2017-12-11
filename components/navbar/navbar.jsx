@@ -38,6 +38,7 @@ import NotifyCounts from 'components/notify_counts.jsx';
 import QuickSwitchModal from 'components/quick_switch_modal';
 import RenameChannelModal from 'components/rename_channel_modal';
 import StatusIcon from 'components/status_icon.jsx';
+import MenuIcon from 'components/svg/menu_icon';
 import ToggleModalButton from 'components/toggle_modal_button.jsx';
 
 import Pluggable from 'plugins/pluggable';
@@ -713,7 +714,6 @@ export default class Navbar extends React.Component {
 
     createCollapseButtons = (currentId) => {
         var buttons = [];
-        const menuIcon = Constants.MENU_ICON_SVG;
 
         if (currentId == null) {
             buttons.push(
@@ -751,11 +751,7 @@ export default class Navbar extends React.Component {
                             defaultMessage='Toggle sidebar'
                         />
                     </span>
-                    <span
-                        className='icon icon__menu icon--sidebarHeaderTextColor'
-                        dangerouslySetInnerHTML={{__html: menuIcon}}
-                        aria-hidden='true'
-                    />
+                    <MenuIcon className='icon icon__menu icon--sidebarHeaderTextColor'/>
                     <NotifyCounts/>
                 </button>
             );
@@ -769,7 +765,7 @@ export default class Navbar extends React.Component {
                     data-target='#sidebar-nav'
                     onClick={this.toggleRightSidebar}
                 >
-                    <span dangerouslySetInnerHTML={{__html: Constants.MENU_ICON}}/>
+                    <MenuIcon/>
                 </button>
             );
         }
