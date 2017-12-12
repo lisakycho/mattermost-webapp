@@ -2,6 +2,7 @@
 // See License.txt for license information.
 
 import {connect} from 'react-redux';
+import {createSelector} from 'reselect';
 
 import {get} from 'mattermost-redux/selectors/entities/preferences';
 
@@ -10,18 +11,22 @@ import {Constants, TutorialSteps, Preferences} from 'utils/constants.jsx';
 
 import ChannelView from './channel_view.jsx';
 
-function mapStateToProps(state, ownProps) {
-    const channel = state.entities.channels.channels[state.entities.channels.currentChannelId];
-
-    let deactivatedChannel = false;
-    if (channel && channel.type === Constants.DM_CHANNEL) {
-        const teammate = getDirectTeammate(channel.id);
-        deactivatedChannel = teammate && teammate.delete_at;
+// Temporary selector until getDirectTeammate is converted to be redux-friendly
+const getDeactivatedChannel = createSelector(
+    (state) => state.entities.users.users,
+    (state, channelId) => channelId,
+    (users, channelId) => {
+        const teammate = getDirectTeammate(channelId);
+        return teammate && teammate.delete_at;
     }
+);
+
+function mapStateToProps(state, ownProps) {
+    const channelId = state.entities.channels.currentChannelId;
 
     return {
-        channelId: state.entities.channels.currentChannelId,
-        deactivatedChannel,
+        channelId,
+        deactivatedChannel: getDeactivatedChannel(state, channelId),
         showTutorial: Number(get(state, Preferences.TUTORIAL_STEP, state.entities.users.currentUserId, 999)) <= TutorialSteps.INTRO_SCREENS
     };
 }
