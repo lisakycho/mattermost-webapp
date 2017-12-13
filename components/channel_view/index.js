@@ -13,7 +13,7 @@ import ChannelView from './channel_view.jsx';
 
 // Temporary selector until getDirectTeammate is converted to be redux-friendly
 const getDeactivatedChannel = createSelector(
-    (state) => state.entities.users.users,
+    (state) => state.entities.users.profiles,
     (state, channelId) => channelId,
     (users, channelId) => {
         const teammate = getDirectTeammate(channelId);
