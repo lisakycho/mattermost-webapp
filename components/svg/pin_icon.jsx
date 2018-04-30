@@ -5,7 +5,7 @@ import React from 'react';
 
 export default class PinIcon extends React.PureComponent {
     render() {
-        return (
+         return (
             <span {...this.props}>
                 <svg
                     width='14px'
