@@ -177,7 +177,7 @@ export default class ChannelHeader extends React.Component {
         } else {
             // console.log(JSON.stringify(this.props.actions.showPinnedPosts()))
             this.props.actions.showPinnedPosts();
-            // debugger;
+            debugger;
         }
     };
 

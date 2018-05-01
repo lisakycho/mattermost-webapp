@@ -101,7 +101,7 @@ export default class TeamSignupDisplayNamePage extends React.PureComponent {
                                     type='text'
                                     ref='name'
                                     className='form-control'
-                                    placeholder=''
+                                    paceholder=''
                                     maxLength='128'
                                     defaultValue={this.props.state.team.display_name}
                                     autoFocus={true}
