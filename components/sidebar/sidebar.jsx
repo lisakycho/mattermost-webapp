@@ -17,8 +17,8 @@ import AppDispatcher from 'dispatcher/app_dispatcher.jsx';
 import * as ChannelUtils from 'utils/channel_utils.jsx';
 import {ActionTypes, Constants} from 'utils/constants.jsx';
 import * as Utils from 'utils/utils.jsx';
-// import favicon from 'images/favicon/favicon-16x16.png';
-import favicon from 'images/favicon/favicon-red-dot-16x16.png'; 
+import favicon from 'images/favicon/favicon-16x16.png';
+import redDotFavicon from 'images/favicon/favicon-red-dot-16x16.png'; 
 import redFavicon from 'images/favicon/redfavicon-16x16.png';
 import MoreChannels from 'components/more_channels';
 import MoreDirectChannels from 'components/more_direct_channels';
@@ -29,6 +29,8 @@ import UnreadChannelIndicator from '../unread_channel_indicator.jsx';
 
 import SidebarHeader from './header';
 import SidebarChannel from './sidebar_channel';
+
+import {Helmet} from "react-helmet";
 
 export default class Sidebar extends React.PureComponent {
     static propTypes = {
@@ -162,7 +164,6 @@ export default class Sidebar extends React.PureComponent {
                 this.props.actions.close();
             }
         }
-
         this.updateTitle();
         this.setBadgesActiveAndFavicon();
         this.setFirstAndLastUnreadChannels();
@@ -174,27 +175,29 @@ export default class Sidebar extends React.PureComponent {
     }
 
     setBadgesActiveAndFavicon() {
-        this.lastBadgesActive = this.badgesActive;
-        this.badgesActive = this.props.unreads.mentions;
-
-        // update the favicon to show if there are any notifications
-        if (this.lastBadgesActive !== this.badgesActive) {
-            var link = document.createElement('link');
-            link.type = 'image/x-icon';
-            link.rel = 'shortcut icon';
-            link.id = 'favicon';
-            if (this.badgesActive) {
-                link.href = redFavicon;
-            } else {
-                link.href = favicon;
-            }
-            var head = document.getElementsByTagName('head')[0];
-            var oldLink = document.getElementById('favicon');
-            if (oldLink) {
-                head.removeChild(oldLink);
-            }
-            head.appendChild(link);
-        }
+        // this.lastBadgesActive = this.badgesActive;
+        // this.badgesActive = this.props.unreads.mentions;
+        // // update the favicon to show if there are any notifications
+        // if (this.lastBadgesActive !== this.badgesActive) {
+        //     var link = document.createElement('link');
+        //     link.type = 'image/x-icon';
+        //     link.rel = 'shortcut icon';
+        //     link.id = 'favicon';
+        //     // debugger;
+        //     if (this.badgesActive) {
+        //         link.href = redFavicon;
+        //     } else if (this.props.unreads.mentionCount > 0) {
+        //         link.href = redDotFavicon;
+        //     } else {
+        //         link.href = favicon;
+        //     }
+        //     var head = document.getElementsByTagName('head')[0];
+        //     var oldLink = document.getElementById('favicon');
+        //     if (oldLink) {
+        //         head.removeChild(oldLink);
+        //     }
+        //     head.appendChild(link);
+        // }
     }
 
     setFirstAndLastUnreadChannels() {
@@ -457,6 +460,11 @@ export default class Sidebar extends React.PureComponent {
     }
 
     render() {
+        <div>
+            <Helmet>
+                <title> MY TITLE </title>
+            </Helmet>
+        </div>
         const {
             directAndGroupChannelIds,
             favoriteChannelIds,

@@ -46,5 +46,9 @@
         "src": "/static/images/favicon/favicon-96x96.png",
         "type": "image/png",
         "sizes": "96x96"
+    }, {
+        "src": "/static/images/favicon/favicon-red-dot-16x16.png",
+        "type": "image/png",
+        "sizes": "16x16" 
     }]
 }
