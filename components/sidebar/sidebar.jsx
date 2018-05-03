@@ -30,8 +30,6 @@ import UnreadChannelIndicator from '../unread_channel_indicator.jsx';
 import SidebarHeader from './header';
 import SidebarChannel from './sidebar_channel';
 
-import {Helmet} from "react-helmet";
-
 export default class Sidebar extends React.PureComponent {
     static propTypes = {
 
@@ -175,9 +173,9 @@ export default class Sidebar extends React.PureComponent {
     }
 
     setBadgesActiveAndFavicon() {
+        // debugger;
         this.lastBadgesActive = this.badgesActive;
         this.badgesActive = this.props.unreads.mentions;
-        document.head || (document.head = document.getElementsByTagName('head')[0]);
         // update the favicon to show if there are any notifications
         if (this.lastBadgesActive !== this.badgesActive) {
             var link = document.createElement('link');
@@ -185,7 +183,7 @@ export default class Sidebar extends React.PureComponent {
             link.type = 'image/x-icon';
             link.rel = 'shortcut icon';
             link.id = 'favicon';
-            // debugger;
+            debugger;
             if (this.badgesActive) {
                 link.href = redFavicon;
             } else if (this.props.unreads.mentionCount > 0) {
@@ -193,12 +191,12 @@ export default class Sidebar extends React.PureComponent {
             } else {
                 link.href = favicon;
             }
-            // var head = document.getElementsByTagName('head')[0];
-            // var oldLink = document.getElementById('favicon');
+            var head = document.getElementsByTagName('head')[0];
+            var oldLink = document.getElementById('favicon');
             if (oldLink) {
-                document.head.removeChild(oldLink);
+                head.removeChild(oldLink);
                }
-            document.head.appendChild(link);
+            head.appendChild(link);
         }
     }
 
