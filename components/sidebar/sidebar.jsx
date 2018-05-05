@@ -162,6 +162,7 @@ export default class Sidebar extends React.PureComponent {
                 this.props.actions.close();
             }
         }
+
         this.updateTitle();
         this.setBadgesActiveAndFavicon();
         this.setFirstAndLastUnreadChannels();
@@ -173,7 +174,6 @@ export default class Sidebar extends React.PureComponent {
     }
 
     setBadgesActiveAndFavicon() {
-        // debugger;
         this.lastBadgesActive = this.badgesActive;
         this.badgesActive = this.props.unreads.mentions;
         // update the favicon to show if there are any notifications
@@ -183,7 +183,6 @@ export default class Sidebar extends React.PureComponent {
             link.type = 'image/x-icon';
             link.rel = 'shortcut icon';
             link.id = 'favicon';
-            debugger;
             if (this.badgesActive) {
                 link.href = redFavicon;
             } else if (this.props.unreads.mentionCount > 0) {
@@ -195,38 +194,10 @@ export default class Sidebar extends React.PureComponent {
             var oldLink = document.getElementById('favicon');
             if (oldLink) {
                 head.removeChild(oldLink);
-               }
+            }
             head.appendChild(link);
         }
     }
-
-    // setBadgesActiveAndFavicon() {
-    //     this.lastBadgesActive = this.badgesActive;
-    //     this.badgesActive = this.props.unreads.mentions;
-    //     // update the favicon to show if there are any notifications
-    //     if (this.lastBadgesActive !== this.badgesActive) {
-    //         debugger;
-    //         var link = document.createElement('link');
-    //         var oldLink = document.getElementById('dynamic-favicon');
-    //     //     link.type = 'image/x-icon';
-    //         link.rel = 'shortcut icon';
-    //         link.id = 'dynamic-favicon';
-    //     //     // debugger;
-    //         if (this.badgesActive) {
-    //             link.href = redFavicon;
-    //         } else if (this.props.unreads.mentionCount > 0) {
-    //             link.href = redDotFavicon;
-    //         } else {
-    //             link.href = favicon;
-    //         }
-    //         var head = document.getElementsByTagName('head')[0];
-    //     //     var oldLink = document.getElementById('favicon');
-    //         if (oldLink) {
-    //             head.removeChild(oldLink);
-    //         }
-    //         head.appendChild(link);
-    //     }
-    // }
 
     setFirstAndLastUnreadChannels() {
         const {
@@ -292,7 +263,7 @@ export default class Sidebar extends React.PureComponent {
             const container = $(ReactDOM.findDOMNode(this.refs.container));
             const firstUnreadElement = $(ReactDOM.findDOMNode(this.refs[this.firstUnreadChannel]));
             const scrollTop = (container.scrollTop() + firstUnreadElement.position().top) - unreadMargin;
-            container.stop().animate({ scrollTop }, 500, 'swing');
+            container.stop().animate({scrollTop}, 500, 'swing');
         }
     }
 
@@ -303,7 +274,7 @@ export default class Sidebar extends React.PureComponent {
             const lastUnreadElement = $(ReactDOM.findDOMNode(this.refs[this.lastUnreadChannel]));
             const elementBottom = lastUnreadElement.position().top + lastUnreadElement.height();
             const scrollTop = (container.scrollTop() + (elementBottom - container.height())) + unreadMargin;
-            container.stop().animate({ scrollTop }, 500, 'swing');
+            container.stop().animate({scrollTop}, 500, 'swing');
         }
     }
 
@@ -442,29 +413,29 @@ export default class Sidebar extends React.PureComponent {
     }
 
     showMoreChannelsModal = () => {
-        this.setState({ showMoreChannelsModal: true });
+        this.setState({showMoreChannelsModal: true});
         trackEvent('ui', 'ui_channels_more_public');
     }
 
     hideMoreChannelsModal = () => {
-        this.setState({ showMoreChannelsModal: false });
+        this.setState({showMoreChannelsModal: false});
     }
 
     showNewChannelModal = (type) => {
-        this.setState({ newChannelModalType: type });
+        this.setState({newChannelModalType: type});
     }
 
     hideNewChannelModal = () => {
-        this.setState({ newChannelModalType: '' });
+        this.setState({newChannelModalType: ''});
     }
 
     showMoreDirectChannelsModal = () => {
         trackEvent('ui', 'ui_channels_more_direct');
-        this.setState({ showDirectChannelsModal: true });
+        this.setState({showDirectChannelsModal: true});
     }
 
     hideMoreDirectChannelsModal = () => {
-        this.setState({ showDirectChannelsModal: false });
+        this.setState({showDirectChannelsModal: false});
     }
 
     openQuickSwitcher = (e) => {
@@ -499,7 +470,7 @@ export default class Sidebar extends React.PureComponent {
 
         // Check if we have all info needed to render
         if (this.props.currentTeam == null || this.props.currentUser == null) {
-            return (<div />);
+            return (<div/>);
         }
 
         this.badgesActive = false;
@@ -675,7 +646,7 @@ export default class Sidebar extends React.PureComponent {
 
         return (
             <div
-                className={classNames('sidebar--left', { 'move--right': this.props.isOpen && Utils.isMobile() })}
+                className={classNames('sidebar--left', {'move--right': this.props.isOpen && Utils.isMobile()})}
                 id='sidebar-left'
                 key='sidebar-left'
             >

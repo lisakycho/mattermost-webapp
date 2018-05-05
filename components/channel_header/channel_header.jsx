@@ -175,9 +175,7 @@ export default class ChannelHeader extends React.Component {
         if (this.props.rhsState === RHSStates.PIN) {
             this.props.actions.closeRightHandSide();
         } else {
-            // console.log(JSON.stringify(this.props.actions.showPinnedPosts()))
             this.props.actions.showPinnedPosts();
-            debugger;
         }
     };
 
@@ -999,7 +997,6 @@ export default class ChannelHeader extends React.Component {
         if (this.props.rhsState === RHSStates.PIN) {
             pinnedIconClass += ' active';
         }
-        // debugger;
         return (
             <div
                 id='channel-header'

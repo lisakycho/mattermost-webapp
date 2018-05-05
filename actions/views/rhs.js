@@ -125,6 +125,7 @@ function getPreRHSSearchActions(searchPostRequest, terms, rhsState, channelId) {
 
 function getPostRHSSearchActions(searchPostSuccess, result, teamId) {
     const searchActions = getSearchActions(result, teamId);
+
     return [...searchActions, {type: searchPostSuccess}];
 }
 
@@ -221,7 +222,6 @@ export function showPinnedPosts(channelId) {
             result,
             teamId
         );
-        // debugger;
         dispatch(batchActions(postRHSSearchActions));
     };
 }
