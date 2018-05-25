@@ -129,22 +129,6 @@ function getPostRHSSearchActions(searchPostSuccess, result, teamId) {
     return [...searchActions, {type: searchPostSuccess}];
 }
 
-export function getFlaggedPosts() {
-    return async (dispatch, getState) => {
-        const state = getState();
-        const userId = getCurrentUserId(state);
-        const teamId = getCurrentTeamId(state);
-
-        const result = await Client4.getFlaggedPosts(userId, '', teamId);
-
-        await PostActions.getProfilesAndStatusesForPosts(result.posts, dispatch, getState);
-
-        const searchActions = getSearchActions(result, teamId);
-
-        dispatch(batchActions(searchActions));
-    };
-}
-
 export function showFlaggedPosts() {
     return async (dispatch, getState) => {
         const state = getState();

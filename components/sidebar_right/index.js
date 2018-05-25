@@ -8,7 +8,8 @@ import {getChannel} from 'mattermost-redux/selectors/entities/channels';
 import {getPost} from 'mattermost-redux/selectors/entities/posts';
 
 import PostStore from 'stores/post_store';
-import {getPinnedPosts, getFlaggedPosts} from 'actions/views/rhs';
+import {getFlaggedPosts} from 'mattermost-redux/actions/posts'; 
+import {getPinnedPosts} from 'actions/views/rhs';
 import {
     getIsRhsExpanded,
     getIsRhsOpen,
