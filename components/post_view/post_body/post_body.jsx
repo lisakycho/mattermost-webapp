@@ -124,6 +124,7 @@ export default class PostBody extends React.PureComponent {
     render() {
         const post = this.props.post;
         const parentPost = this.props.parentPost;
+        console.log("IN POST BODY (here is the post): " + JSON.stringify(post.metadata))
 
         let comment;
         let postClass = '';
@@ -179,6 +180,7 @@ export default class PostBody extends React.PureComponent {
         if (this.props.post.state === Posts.POST_DELETED || hasPlugin) {
             messageWithAdditionalContent = messageWrapper;
         } else {
+            console.log("IN ELSE " + JSON.stringify(this.props.post))
             messageWithAdditionalContent = (
                 <PostBodyAdditionalContent
                     post={this.props.post}
@@ -199,6 +201,7 @@ export default class PostBody extends React.PureComponent {
         if (isEphemeral) {
             ephemeralPostClass = 'post--ephemeral';
         }
+        console.log("IN POST BODY (here is the messageWithAdditionalContent): " + messageWithAdditionalContent)
 
         return (
             <div>

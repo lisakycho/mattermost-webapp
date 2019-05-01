@@ -303,6 +303,8 @@ export default class PostBodyAdditionalContent extends React.PureComponent {
 
     render() {
         if (this.isLinkToggleable() && !this.state.linkLoadError) {
+            console.log("WOOOOOOOOOOOOOOOOO HERE")
+
             // if message has only one line and starts with a link place toggle in this only line
             // else - place it in new line between message and embed
             const prependToggle = (/^\s*https?:\/\/.*$/).test(this.props.post.message);
@@ -343,7 +345,6 @@ export default class PostBodyAdditionalContent extends React.PureComponent {
                 );
             }
             const imagePreview = this.renderImagePreview();
-
             return (
                 <div>
                     {contents}
@@ -363,6 +364,7 @@ export default class PostBodyAdditionalContent extends React.PureComponent {
             );
         }
 
+        console.log("BOOOOOOOOOOOOOOOO: " + this.props.children)
         return this.props.children;
     }
 }

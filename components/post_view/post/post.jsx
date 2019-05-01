@@ -236,6 +236,7 @@ export default class Post extends React.PureComponent {
         if (this.props.center) {
             centerClass = 'center';
         }
+        console.log("IN POST " + JSON.stringify(post.metadata));
 
         return (
             <div
