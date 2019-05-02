@@ -50,7 +50,7 @@ export default class UserProfile extends PureComponent {
             userId,
         } = this.props;
 
-        const name = overwriteName || displayName || '...';
+        let name = overwriteName || displayName || '...';
         if (disablePopover) {
             return <div className='user-popover'>{name}</div>;
         }
@@ -75,6 +75,9 @@ export default class UserProfile extends PureComponent {
                     />
                 </div>
             );
+            if (displayName.length > 15 && isRHS) {
+                name = displayName.slice(0, 15) + '...';
+            }
         }
 
         return (
