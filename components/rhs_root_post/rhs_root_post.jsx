@@ -40,6 +40,9 @@ export default class RhsRootPost extends React.Component {
         channelIsArchived: PropTypes.bool.isRequired,
         channelType: PropTypes.string,
         channelDisplayName: PropTypes.string,
+        user: PropTypes.object,
+        isBot: PropTypes.bool,
+
     };
 
     static defaultProps = {
@@ -165,10 +168,13 @@ export default class RhsRootPost extends React.Component {
     };
 
     render() {
-        const {post, isReadOnly, teamId, channelIsArchived, channelType, channelDisplayName} = this.props;
+        const {post, isReadOnly, teamId, channelIsArchived, channelType, channelDisplayName, isBot} = this.props;
 
         const isEphemeral = Utils.isPostEphemeral(post);
         const isSystemMessage = PostUtils.isSystemMessage(post);
+
+
+        console.log(isBot + "!!!!!!!!!!!!!!!!!")
 
         let channelName;
         if (channelType === 'D') {
@@ -209,6 +215,7 @@ export default class RhsRootPost extends React.Component {
 
         let userProfile;
         let botIndicator;
+
         if (isSystemMessage) {
             userProfile = (
                 <UserProfile

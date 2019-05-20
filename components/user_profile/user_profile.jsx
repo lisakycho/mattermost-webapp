@@ -75,9 +75,9 @@ export default class UserProfile extends PureComponent {
                     />
                 </div>
             );
-            if (displayName.length > 15 && isRHS) {
-                name = displayName.slice(0, 15) + '...';
-            }
+            // if (displayName.length > 10 && isRHS) {
+            //     name = displayName.slice(0, 10) + '...';
+            // }
         }
 
         return (
@@ -97,11 +97,12 @@ export default class UserProfile extends PureComponent {
                         hasMention={hasMention}
                     />
                 }
-            >
+            >   
                 <div className='user-popover'>
                     {name}
-                    {tag}
+                    {/* {tag} */}
                 </div>
+
             </OverlayTrigger>
         );
     }

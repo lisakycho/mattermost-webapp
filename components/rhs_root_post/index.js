@@ -7,6 +7,7 @@ import {isChannelReadOnlyById, getChannel} from 'mattermost-redux/selectors/enti
 import {getCurrentTeamId} from 'mattermost-redux/selectors/entities/teams';
 import {getConfig} from 'mattermost-redux/selectors/entities/general';
 import {get} from 'mattermost-redux/selectors/entities/preferences';
+import {getUser} from 'mattermost-redux/selectors/entities/users';
 
 import {Preferences} from 'utils/constants.jsx';
 import {isEmbedVisible} from 'selectors/posts';
@@ -19,6 +20,7 @@ function mapStateToProps(state, ownProps) {
     const enablePostUsernameOverride = config.EnablePostUsernameOverride === 'true';
     const teamId = ownProps.teamId || getCurrentTeamId(state);
     const channel = getChannel(state, ownProps.post.channel_id) || {};
+    const user = getUser(state, ownProps.userId);
 
     return {
         enableEmojiPicker,
@@ -32,6 +34,8 @@ function mapStateToProps(state, ownProps) {
         channelDisplayName: channel.display_name,
         isFlagged: get(state, Preferences.CATEGORY_FLAGGED_POST, ownProps.post.id, null) != null,
         compactDisplay: get(state, Preferences.CATEGORY_DISPLAY_SETTINGS, Preferences.MESSAGE_DISPLAY, Preferences.MESSAGE_DISPLAY_DEFAULT) === Preferences.MESSAGE_DISPLAY_COMPACT,
+        isBot: Boolean(user && user.is_bot),
+        user,
     };
 }
 
