@@ -1247,6 +1247,11 @@
         }
     }
 
+    .test {
+        display:'flex'; 
+        flex-direction:'row';
+    }
+    
     .post__header {
         display: flex;
         margin-bottom: 2px;
@@ -1263,7 +1268,7 @@
             font-weight: 600;
             margin-right: 7px;
             overflow: hidden;
-            text-overflow: ellipsis;
+            text-overflow: ellipsis; 
 
             .user-popover {
                 @include clearfix;

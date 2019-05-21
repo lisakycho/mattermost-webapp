@@ -75,10 +75,12 @@ export default class UserProfile extends PureComponent {
                     />
                 </div>
             );
-            // if (displayName.length > 10 && isRHS) {
-            //     name = displayName.slice(0, 10) + '...';
-            // }
         }
+
+        const test = {
+            display:'flex', 
+            flexDirection:'row',
+        };
 
         return (
             <OverlayTrigger
@@ -98,11 +100,12 @@ export default class UserProfile extends PureComponent {
                     />
                 }
             >   
+            <div style={test}>
                 <div className='user-popover'>
                     {name}
-                    {/* {tag} */}
                 </div>
-
+                {tag}
+            </div>
             </OverlayTrigger>
         );
     }
