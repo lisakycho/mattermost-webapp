@@ -224,6 +224,45 @@ export default class ManageTimezones extends React.PureComponent {
                 />
             </div>
         );
+        console.log("hi")
+        const options = []
+        timezones.forEach((tz) => {
+            options.push(
+                <option
+                    key={tz.value}
+                    value={tz.value}
+                >
+                    {tz}
+                </option>
+            )
+        });
+        
+        const test = (
+            <div key='changeTimezone'>
+                <br/>
+                <label className='control-label'>
+                    <FormattedMessage
+                        id='user.settings.timezones.change'
+                        defaultMessage='Change timezone'
+                    />
+                </label>
+                <div className='padding-top'>
+                    <select
+                        id='displayTimezone'
+                        ref='timezone'
+                        className='form-control'
+                        value={this.state.manualTimezoneInput}
+                        onChange={this.state.manualTimezoneInput}
+                    >
+                        {options}
+                    </select>
+                    {serverError}
+                </div>
+                <div>
+                    <br/>
+                </div>
+            </div>
+        );
 
         return (
             <SettingItemMax
@@ -237,7 +276,8 @@ export default class ManageTimezones extends React.PureComponent {
                 width='medium'
                 submit={this.changeTimezone}
                 saving={this.state.isSaving}
-                inputs={inputs}
+                // inputs={inputs}
+                inputs={[test]}
                 updateSection={this.props.updateSection}
             />
         );
