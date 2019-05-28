@@ -224,20 +224,20 @@ export default class ManageTimezones extends React.PureComponent {
                 />
             </div>
         );
-        console.log("hi")
+        console.log("hiiii")
         const options = []
         timezones.forEach((tz) => {
             options.push(
                 <option
-                    key={tz.value}
-                    value={tz.value}
+                    key={tz}
+                    value={tz}
                 >
                     {tz}
                 </option>
             )
         });
         
-        const test = (
+        const test = [
             <div key='changeTimezone'>
                 <br/>
                 <label className='control-label'>
@@ -252,7 +252,7 @@ export default class ManageTimezones extends React.PureComponent {
                         ref='timezone'
                         className='form-control'
                         value={this.state.manualTimezoneInput}
-                        onChange={this.state.manualTimezoneInput}
+                        onChange={this.onChange}
                     >
                         {options}
                     </select>
@@ -261,6 +261,16 @@ export default class ManageTimezones extends React.PureComponent {
                 <div>
                     <br/>
                 </div>
+            </div>
+        ];
+
+        test.push(
+            <div>
+                <br/>
+                <FormattedHTMLMessage
+                    id='user.settings.timezones.promote'
+                    defaultMessage='Select the time zone used for timestamps in the user interface and email notifications.'
+                />
             </div>
         );
 
@@ -277,7 +287,7 @@ export default class ManageTimezones extends React.PureComponent {
                 submit={this.changeTimezone}
                 saving={this.state.isSaving}
                 // inputs={inputs}
-                inputs={[test]}
+                inputs={test}
                 updateSection={this.props.updateSection}
             />
         );
