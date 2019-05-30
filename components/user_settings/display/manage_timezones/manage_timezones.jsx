@@ -224,7 +224,7 @@ export default class ManageTimezones extends React.PureComponent {
                 />
             </div>
         );
-        console.log("hiiii")
+        console.log("Input: " + this.state.manualTimezoneInput)
         const options = []
         timezones.forEach((tz) => {
             options.push(
@@ -236,8 +236,25 @@ export default class ManageTimezones extends React.PureComponent {
                 </option>
             )
         });
-        
         const test = [
+            <div className='checkbox'>
+                <label>
+                    <input
+                        id='automaticTimezoneInput'
+                        type='checkbox'
+                        checked={useAutomaticTimezone}
+                        onChange={this.handleAutomaticTimezone}
+                        disabled={noTimezonesFromServer}
+                    />
+                    <FormattedMessage
+                        id='user.settings.timezones.automatic'
+                        defaultMessage='Set automatically'
+                    />
+                </label>
+            </div>
+        ]
+
+        test.push(
             <div key='changeTimezone'>
                 <br/>
                 <label className='control-label'>
@@ -253,6 +270,7 @@ export default class ManageTimezones extends React.PureComponent {
                         className='form-control'
                         value={this.state.manualTimezoneInput}
                         onChange={this.onChange}
+                        disabled={useAutomaticTimezone}
                     >
                         {options}
                     </select>
@@ -262,7 +280,7 @@ export default class ManageTimezones extends React.PureComponent {
                     <br/>
                 </div>
             </div>
-        ];
+        );
 
         test.push(
             <div>
@@ -273,6 +291,10 @@ export default class ManageTimezones extends React.PureComponent {
                 />
             </div>
         );
+
+
+        console.log("STATE: " + JSON.stringify(this.state))
+        console.log("updatesection: " + this.props.updateSection)
 
         return (
             <SettingItemMax
