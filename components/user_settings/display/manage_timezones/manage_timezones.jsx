@@ -269,7 +269,7 @@ export default class ManageTimezones extends React.PureComponent {
                         ref='timezone'
                         className='form-control'
                         value={this.state.manualTimezoneInput}
-                        onChange={this.onChange}
+                        onChange={this.handleTimezoneSelected}
                         disabled={useAutomaticTimezone}
                     >
                         {options}
